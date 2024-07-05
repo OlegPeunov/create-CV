@@ -1,7 +1,7 @@
 import * as S from './PersonalInfo.styled';
-import { Card } from '../Card/Card';
-import { FormItem } from '../FormItem/FormItem';
-import { Input } from '../Input/Input';
+import { Card } from '../../Card/Card';
+import { FormItem } from '../../FormItem/FormItem';
+import { Input } from '../../Input/Input';
 import { Upload, DatePicker } from 'antd';
 
 import { useState } from 'react';

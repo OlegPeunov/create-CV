@@ -8,7 +8,7 @@ const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
 
-export const FormEducation = () => {
+export const FormEducation: React.FC = () => {
   return (
     <Card title="Образование">
       <FormItem title="Учреждение">

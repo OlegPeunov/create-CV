@@ -1,13 +1,19 @@
 import * as S from './ExperianceItem.styled';
 import { FormItem } from '../../../FormItem/FormItem';
 import { Input } from '../../../Input/Input';
+import { Workplace } from '../../../Workplace/Workplace';
 import { TextArea } from '../../../TextArea/TextArea';
 import { DatePicker } from 'antd';
 const { RangePicker } = DatePicker;
 
-export const ExperianceItem: React.FC = () => {
+type ItemType = {
+  num: number;
+};
+
+export const ExperianceItem: React.FC<ItemType> = ({ num }) => {
   return (
     <S.Form>
+      <Workplace num={num} />
       <FormItem title="Компания">
         <Input placeholder="Компания" />
       </FormItem>

@@ -4,10 +4,18 @@ import { Button } from '../../Button/Button';
 import { ExperianceItem } from './ExperianceItem/ExperianceItem';
 
 export const FormExperiance: React.FC = () => {
-  const [experianceItems, setExperianceItems] = useState([<ExperianceItem />]);
+  const [formCounter, setFormCounter] = useState<number>(1);
+  const [experianceItems, setExperianceItems] = useState([
+    <ExperianceItem num={1} />,
+  ]);
 
   const handleIncrease = () => {
-    setExperianceItems([...experianceItems, <ExperianceItem />]);
+    setFormCounter(formCounter + 1);
+
+    setExperianceItems([
+      ...experianceItems,
+      <ExperianceItem num={formCounter + 1} />,
+    ]);
   };
 
   return (

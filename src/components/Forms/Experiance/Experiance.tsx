@@ -4,17 +4,15 @@ import { Button } from '../../Button/Button';
 import { ExperianceItem } from './ExperianceItem/ExperianceItem';
 
 export const FormExperiance: React.FC = () => {
-  const [formCounter, setFormCounter] = useState<number>(1);
-  // const forms = [];
+  const [experianceItems, setExperianceItems] = useState([<ExperianceItem />]);
 
   const handleIncrease = () => {
-    setFormCounter(formCounter + 1);
+    setExperianceItems([...experianceItems, <ExperianceItem />]);
   };
 
   return (
     <Card title="Опыт работы">
-      <ExperianceItem />
-
+      {experianceItems}
       <Button text="Добавить еще" onHandleIncrease={handleIncrease}></Button>
     </Card>
   );

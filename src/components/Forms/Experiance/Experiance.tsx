@@ -1,19 +1,17 @@
+import { useState } from 'react';
 import { Card } from '../../Card/Card';
-import { FormItem } from '../../FormItem/FormItem';
-import { Input } from '../../Input/Input';
 import { Button } from '../../Button/Button';
-import { DatePicker } from 'antd';
 
 export const FormExperiance: React.FC = () => {
+  const [formCounter, setFormCounter] = useState<number>(1);
+
+  const handleIncrease = () => {
+    setFormCounter(formCounter + 1);
+  };
+
   return (
     <Card title="Опыт работы">
-      <FormItem title="Учреждение">
-        <Input placeholder="Учреждение" />
-      </FormItem>
-      <FormItem title="Дата окончания">
-        <DatePicker placeholder="Дата окончания" />
-      </FormItem>
-      <Button text="Добавить еще"></Button>
+      <Button text="Добавить еще" onHandleIncrease={handleIncrease}></Button>
     </Card>
   );
 };

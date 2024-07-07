@@ -20,6 +20,7 @@ export const StyledDel = styled.span`
   width: 18px;
   height: 18px;
   font-size: 22px;
+  cursor: pointer;
 `;
 // export const StyledDel = styled.div`
 //   width: 18px;

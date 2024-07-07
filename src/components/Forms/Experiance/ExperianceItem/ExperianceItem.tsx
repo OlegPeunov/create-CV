@@ -9,17 +9,24 @@ const { RangePicker } = DatePicker;
 type ItemType = {
   id: string;
   deletable: boolean;
+  num: number;
   onFormRemove: (id: string) => void;
 };
 
 export const ExperianceItem: React.FC<ItemType> = ({
   id,
   deletable,
+  num,
   onFormRemove,
 }) => {
   return (
     <S.Form>
-      <Workplace id={id} deletable={deletable} onFormRemove={onFormRemove} />
+      <Workplace
+        id={id}
+        deletable={deletable}
+        onFormRemove={onFormRemove}
+        num={num}
+      />
       <FormItem title="Компания">
         <Input placeholder="Компания" />
       </FormItem>

@@ -22,11 +22,12 @@ export const FormExperiance: React.FC = () => {
 
   return (
     <Card title="Опыт работы">
-      {experianceForms.map(el => (
+      {experianceForms.map((el, i) => (
         <ExperianceItem
           id={el.id}
           deletable={el.deletable}
           key={el.id}
+          num={i + 1}
           onFormRemove={handleFormRemove}
         />
       ))}

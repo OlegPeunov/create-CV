@@ -7,13 +7,14 @@ import { DatePicker } from 'antd';
 const { RangePicker } = DatePicker;
 
 type ItemType = {
-  num: number;
+  id: string;
+  deletable: boolean;
 };
 
-export const ExperianceItem: React.FC<ItemType> = ({ num }) => {
+export const ExperianceItem: React.FC<ItemType> = ({ id, deletable }) => {
   return (
     <S.Form>
-      <Workplace num={num} />
+      <Workplace id={id} deletable={deletable} />
       <FormItem title="Компания">
         <Input placeholder="Компания" />
       </FormItem>

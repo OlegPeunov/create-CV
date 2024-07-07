@@ -1,13 +1,15 @@
-import { StyledWorkplace, StyledText } from './Workplace.styled';
+import { StyledWorkplace, StyledText, StyledDel } from './Workplace.styled';
 
 type WorkplaceType = {
-  num: number;
+  id: string;
+  deletable: boolean;
 };
 
-export const Workplace: React.FC<WorkplaceType> = props => {
+export const Workplace: React.FC<WorkplaceType> = ({ id, deletable }) => {
   return (
     <StyledWorkplace>
-      <StyledText>Место работы - {props.num}</StyledText>
+      <StyledText>Место работы - {id}</StyledText>
+      {deletable ? <StyledDel>&times;</StyledDel> : ''}
     </StyledWorkplace>
   );
 };

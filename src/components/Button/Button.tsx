@@ -2,12 +2,12 @@ import { StyledButton } from './Button.styled';
 
 export type ButtonProps = {
   text: string;
-  onHandleIncrease: () => void;
+  onAddForm: () => void;
 };
 
-export const Button: React.FC<ButtonProps> = ({ text, onHandleIncrease }) => {
+export const Button: React.FC<ButtonProps> = ({ text, onAddForm }) => {
   return (
-    <StyledButton type="primary" onClick={onHandleIncrease}>
+    <StyledButton type="primary" onClick={onAddForm}>
       {text}
     </StyledButton>
   );

@@ -23,7 +23,7 @@ export const ExperianceItem: React.FC<ItemType> = ({
       <S.StyledWorkplace>
         <S.StyledText>Место работы - {num}</S.StyledText>
         {deletable ? (
-          <S.StyledDel onClick={() => onFormRemove(id)}></S.StyledDel>
+          <S.StyledDel onClick={() => onFormRemove(id)}>&times;</S.StyledDel>
         ) : (
           ''
         )}

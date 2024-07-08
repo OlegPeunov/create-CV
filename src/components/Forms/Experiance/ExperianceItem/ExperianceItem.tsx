@@ -1,7 +1,6 @@
 import * as S from './ExperianceItem.styled';
 import { FormItem } from '../../../FormItem/FormItem';
 import { Input } from '../../../Input/Input';
-import { Workplace } from '../../../Workplace/Workplace';
 import { TextArea } from '../../../TextArea/TextArea';
 import { DatePicker } from 'antd';
 const { RangePicker } = DatePicker;
@@ -21,12 +20,14 @@ export const ExperianceItem: React.FC<ItemType> = ({
 }) => {
   return (
     <S.Form>
-      <Workplace
-        id={id}
-        deletable={deletable}
-        onFormRemove={onFormRemove}
-        num={num}
-      />
+      <S.StyledWorkplace>
+        <S.StyledText>Место работы - {num}</S.StyledText>
+        {deletable ? (
+          <S.StyledDel onClick={() => onFormRemove(id)}></S.StyledDel>
+        ) : (
+          ''
+        )}
+      </S.StyledWorkplace>
       <FormItem title="Компания">
         <Input placeholder="Компания" />
       </FormItem>

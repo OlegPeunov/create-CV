@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card } from '../../Card/Card';
 import { Button } from '../../Button/Button';
 import { ExperianceItem } from './ExperianceItem/ExperianceItem';
 import { ExpType } from '../../types';
 
 export const FormExperiance: React.FC = () => {
-  const [experianceForms, setExperianceForms] = useState<Array<ExpType>>([]);
+  const [experianceForms, setExperianceForms] = useState<Array<ExpType>>([
+    { id: new Date().toISOString(), deletable: false },
+  ]);
 
   const handleAddForm = () => {
     setExperianceForms(prevForms => [
@@ -18,8 +20,6 @@ export const FormExperiance: React.FC = () => {
     setExperianceForms(prevForms => prevForms.filter(form => form.id !== id));
   };
 
-  useEffect(() => handleAddForm(), []);
-
   return (
     <Card title="Опыт работы">
       {experianceForms.map((el, i) => (
@@ -31,7 +31,7 @@ export const FormExperiance: React.FC = () => {
           onFormRemove={handleFormRemove}
         />
       ))}
-      <Button text="Добавить еще" onAddForm={handleAddForm}></Button>
+      <Button text="Добавить еще" onClick={handleAddForm}></Button>
     </Card>
   );
 };

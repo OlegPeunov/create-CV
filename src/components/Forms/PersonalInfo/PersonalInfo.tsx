@@ -15,7 +15,7 @@ const getBase64 = (img: FileType, callback: (url: string) => void) => {
   reader.readAsDataURL(img);
 };
 
-export const FormPersonalInfo = () => {
+export const FormPersonalInfo: React.FC = () => {
   const [previewImage, setPreviewImage] = useState<string>('');
 
   const handleChange: UploadProps['onChange'] = async info => {

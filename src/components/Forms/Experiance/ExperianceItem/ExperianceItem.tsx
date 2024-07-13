@@ -1,4 +1,5 @@
 import * as S from './ExperianceItem.styled';
+
 import { FormItem } from '../../../FormItem/FormItem';
 import { Input } from '../../../Input/Input';
 import { TextArea } from '../../../TextArea/TextArea';
@@ -22,11 +23,7 @@ export const ExperianceItem: React.FC<ItemType> = ({
     <S.Form>
       <S.StyledWorkplace>
         <S.StyledText>Место работы - {num}</S.StyledText>
-        {deletable ? (
-          <S.StyledDel onClick={() => onFormRemove(id)}>&times;</S.StyledDel>
-        ) : (
-          ''
-        )}
+        {deletable ? <S.StyledDelete onClick={() => onFormRemove(id)} /> : ''}
       </S.StyledWorkplace>
       <FormItem title="Компания">
         <Input placeholder="Компания" />

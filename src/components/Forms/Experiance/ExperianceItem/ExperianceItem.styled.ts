@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { DeleteOutlined } from '@ant-design/icons';
 export const Form = styled.div`
   width: 100%;
   margin-bottom: 20px;
@@ -21,15 +21,9 @@ export const StyledText = styled.p`
   letter-spacing: 0.4px;
 `;
 
-export const StyledDel = styled.span`
+export const StyledDelete = styled(DeleteOutlined)`
   width: 18px;
   height: 18px;
-  font-size: 22px;
   cursor: pointer;
 `;
-// export const StyledDel = styled.div`
-//   width: 18px;
-//   height: 18px;
 
-//   background-image: url('./del.svg');
-// `;

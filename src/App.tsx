@@ -15,8 +15,8 @@ export const App: React.FC = () => {
         <Header />
         <FormPersonalInfo />
         {/* <FormEducation />
-        <FormSkills />
-        <FormExperiance /> */}
+        <FormSkills /> */}
+        {/* <FormExperiance /> */}
       </S.StyledLayout>
     </Provider>
   );

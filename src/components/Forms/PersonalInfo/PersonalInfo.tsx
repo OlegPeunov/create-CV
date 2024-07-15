@@ -3,10 +3,11 @@ import { Card } from '../../Card/Card';
 import { FormItem } from '../../FormItem/FormItem';
 import { Input } from '../../Input/Input';
 import { Upload, DatePicker } from 'antd';
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import type { GetProp, UploadProps } from 'antd';
 import { personalInfoSlice } from '../../../store/reducers/PersonalInfoSlice';
 import { useAppDispatch } from '../../../hooks/redux';
+import dayjs, { Dayjs } from 'dayjs';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -44,30 +45,35 @@ export const FormPersonalInfo: React.FC = () => {
     </S.ButtonUpload>
   );
 
+  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputName(event.target.value));
+  };
+
+  const handleChangeLocation = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputLocation(event.target.value));
+  };
+
+  const handleChangePhone = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputPhone(event.target.value));
+  };
+
   return (
     <Card title="Персональная информация">
       <FormItem title="ФИО">
-        <Input
-          placeholder="ФИО"
-          handleOnChange={(value: string) => dispatch(setInputName(value))}
-        />
+        <Input placeholder="ФИО" onChange={handleChangeName} />
       </FormItem>
       <FormItem title="Место жительства">
-        <Input
-          placeholder="Место жительства"
-          handleOnChange={(value: string) => dispatch(setInputLocation(value))}
-        />
+        <Input placeholder="Место жительства" onChange={handleChangeLocation} />
       </FormItem>
       <FormItem title="Номер телефона">
-        <Input
-          placeholder="Номер телефона"
-          handleOnChange={(value: string) => dispatch(setInputPhone(value))}
-        />
+        <Input placeholder="Номер телефона" onChange={handleChangePhone} />
       </FormItem>
       <FormItem title="Дата рождения">
         <DatePicker
           placeholder="День рождения"
-          onChange={(value: string) => dispatch(setBirthday(String(value)))}
+          onChange={(date: Dayjs) =>
+            dispatch(setBirthday(`${dayjs(date).format('DD.MM.YYYY')}`))
+          }
         />
       </FormItem>
       <Upload

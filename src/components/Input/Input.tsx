@@ -1,19 +1,15 @@
 import { StyledInput } from './Input.styled';
-import { useAppDispatch } from '../../hooks/redux';
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 
 export type InputType = {
+  [x: string]: any;
   placeholder: string;
-  action: ActionCreatorWithPayload<string>;
 };
 
 export const Input: React.FC<InputType> = props => {
-  const dispatch = useAppDispatch();
-
   return (
     <StyledInput
       placeholder={props.placeholder}
-      onChange={(value: string) => dispatch(props.action(value))}
+      onChange={e => props.handleOnChange(e)}
     />
   );
 };

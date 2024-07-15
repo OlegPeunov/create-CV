@@ -47,13 +47,22 @@ export const FormPersonalInfo: React.FC = () => {
   return (
     <Card title="Персональная информация">
       <FormItem title="ФИО">
-        <Input placeholder="ФИО" action={setInputName} />
+        <Input
+          placeholder="ФИО"
+          handleOnChange={(value: string) => dispatch(setInputName(value))}
+        />
       </FormItem>
       <FormItem title="Место жительства">
-        <Input placeholder="Место жительства" action={setInputLocation} />
+        <Input
+          placeholder="Место жительства"
+          handleOnChange={(value: string) => dispatch(setInputLocation(value))}
+        />
       </FormItem>
       <FormItem title="Номер телефона">
-        <Input placeholder="Номер телефона" action={setInputPhone} />
+        <Input
+          placeholder="Номер телефона"
+          handleOnChange={(value: string) => dispatch(setInputPhone(value))}
+        />
       </FormItem>
       <FormItem title="Дата рождения">
         <DatePicker

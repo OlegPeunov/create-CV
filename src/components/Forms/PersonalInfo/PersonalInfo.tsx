@@ -17,14 +17,20 @@ const getBase64 = (img: FileType, callback: (url: string) => void) => {
 };
 
 export const FormPersonalInfo: React.FC = () => {
-  const { setInputName, setInputLocation, setInputPhone, setBirthday } =
-    personalInfoSlice.actions;
+  const {
+    setInputName,
+    setInputLocation,
+    setInputPhone,
+    setBirthday,
+    setAvatar,
+  } = personalInfoSlice.actions;
   const [previewImage, setPreviewImage] = useState<string>('');
   const dispatch = useAppDispatch();
 
   const handleChange: UploadProps['onChange'] = async info => {
     getBase64(info.file as FileType, url => {
       setPreviewImage(url);
+      dispatch(setAvatar(url));
     });
   };
 

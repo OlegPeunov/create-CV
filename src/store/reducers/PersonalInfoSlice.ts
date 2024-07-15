@@ -31,6 +31,9 @@ export const personalInfoSlice = createSlice({
     setBirthday(state, action: PayloadAction<string>) {
       state.birthday = action.payload;
     },
+    setAvatar(state, action: PayloadAction<string>) {
+      state.avatar = action.payload;
+    },
   },
 });
 

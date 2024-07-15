@@ -6,6 +6,7 @@ import { Upload, DatePicker } from 'antd';
 import { useState } from 'react';
 import type { GetProp, UploadProps } from 'antd';
 import { personalInfoSlice } from '../../../store/reducers/PersonalInfoSlice';
+import { useAppDispatch } from '../../../hooks/redux';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -16,9 +17,10 @@ const getBase64 = (img: FileType, callback: (url: string) => void) => {
 };
 
 export const FormPersonalInfo: React.FC = () => {
-  const { setInputName, setInputLocation, setInputPhone } =
+  const { setInputName, setInputLocation, setInputPhone, setBirthday } =
     personalInfoSlice.actions;
   const [previewImage, setPreviewImage] = useState<string>('');
+  const dispatch = useAppDispatch();
 
   const handleChange: UploadProps['onChange'] = async info => {
     getBase64(info.file as FileType, url => {
@@ -48,7 +50,10 @@ export const FormPersonalInfo: React.FC = () => {
         <Input placeholder="Номер телефона" action={setInputPhone} />
       </FormItem>
       <FormItem title="Дата рождения">
-        <DatePicker placeholder="День рождения" />
+        <DatePicker
+          placeholder="День рождения"
+          onChange={(value: string) => dispatch(setBirthday(String(value)))}
+        />
       </FormItem>
       <Upload
         name="avatar"
@@ -63,3 +68,5 @@ export const FormPersonalInfo: React.FC = () => {
     </Card>
   );
 };
+
+

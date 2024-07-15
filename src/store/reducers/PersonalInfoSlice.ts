@@ -28,6 +28,9 @@ export const personalInfoSlice = createSlice({
     setInputPhone(state, action: PayloadAction<string>) {
       state.phone = action.payload;
     },
+    setBirthday(state, action: PayloadAction<string>) {
+      state.birthday = action.payload;
+    },
   },
 });
 

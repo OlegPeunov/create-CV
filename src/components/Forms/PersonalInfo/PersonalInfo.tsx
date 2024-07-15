@@ -3,9 +3,9 @@ import { Card } from '../../Card/Card';
 import { FormItem } from '../../FormItem/FormItem';
 import { Input } from '../../Input/Input';
 import { Upload, DatePicker } from 'antd';
-
 import { useState } from 'react';
 import type { GetProp, UploadProps } from 'antd';
+import { personalInfoSlice } from '../../../store/reducers/PersonalInfoSlice';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -16,6 +16,8 @@ const getBase64 = (img: FileType, callback: (url: string) => void) => {
 };
 
 export const FormPersonalInfo: React.FC = () => {
+  const { setInputName, setInputLocation, setInputPhone } =
+    personalInfoSlice.actions;
   const [previewImage, setPreviewImage] = useState<string>('');
 
   const handleChange: UploadProps['onChange'] = async info => {
@@ -29,22 +31,21 @@ export const FormPersonalInfo: React.FC = () => {
       {previewImage === '' ? (
         <S.ButtonText>Выберите ваш аватар</S.ButtonText>
       ) : (
-        (console.log(previewImage),
-        (<S.AvatarPreview src={previewImage} alt="your avatar" />))
+        <S.AvatarPreview src={previewImage} alt="your avatar" />
       )}
     </S.ButtonUpload>
   );
 
   return (
     <Card title="Персональная информация">
-      <FormItem title="Персональная информация">
-        <Input placeholder="Персональная информация" />
+      <FormItem title="ФИО">
+        <Input placeholder="ФИО" action={setInputName} />
       </FormItem>
       <FormItem title="Место жительства">
-        <Input placeholder="Место жительства" />
+        <Input placeholder="Место жительства" action={setInputLocation} />
       </FormItem>
       <FormItem title="Номер телефона">
-        <Input placeholder="Номер телефона" />
+        <Input placeholder="Номер телефона" action={setInputPhone} />
       </FormItem>
       <FormItem title="Дата рождения">
         <DatePicker placeholder="День рождения" />

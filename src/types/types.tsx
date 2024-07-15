@@ -1,4 +1,4 @@
-export type ExpType = {
+export interface ExpType {
   id: string;
   deletable: boolean;
-};
+}

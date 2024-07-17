@@ -1,5 +1,5 @@
 import { FormPersonalInfo } from './components/Forms/PersonalInfo/PersonalInfo.tsx';
-// import { FormEducation } from './components/Forms/Education/Education.tsx';
+import { FormEducation } from './components/Forms/Education/Education.tsx';
 // import { FormSkills } from './components/Forms/Skills/Skills.tsx';
 // import { FormExperiance } from './components/Forms/Experiance/Experiance.tsx';
 import { Header } from './components/Header/Header.tsx';
@@ -14,8 +14,8 @@ export const App: React.FC = () => {
       <S.StyledLayout>
         <Header />
         <FormPersonalInfo />
-        {/* <FormEducation />
-        <FormSkills /> */}
+        <FormEducation />
+        {/* <FormSkills /> */}
         {/* <FormExperiance /> */}
       </S.StyledLayout>
     </Provider>

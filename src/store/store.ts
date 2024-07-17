@@ -1,7 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import personalInfoReducer from './reducers/PersonalInfoSlice';
+import educationReducer from './reducers/EducationSlice';
 const rootReducer = combineReducers({
   personalInfoReducer,
+  educationReducer,
 });
 
 export const setupStore = () => {

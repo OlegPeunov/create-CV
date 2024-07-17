@@ -1,9 +1,8 @@
 import { StyledInput } from './Input.styled';
+import { InputProps } from 'antd';
 
-export type InputType = {
-  placeholder: string;
-};
-
-export const Input: React.FC<InputType> = props => {
-  return <StyledInput placeholder={props.placeholder} />;
+export const Input: React.FC<InputProps> = props => {
+  return (
+    <StyledInput placeholder={props.placeholder} onChange={props.onChange} />
+  );
 };

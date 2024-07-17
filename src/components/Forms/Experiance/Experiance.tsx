@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card } from '../../Card/Card';
 import { Button } from '../../Button/Button';
 import { ExperianceItem } from './ExperianceItem/ExperianceItem';
-import { ExpType } from '../../types';
+import { ExpType } from '../../../types/types';
 
 export const FormExperiance: React.FC = () => {
   const [experianceForms, setExperianceForms] = useState<Array<ExpType>>([

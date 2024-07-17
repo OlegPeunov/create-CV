@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { AutoComplete } from 'antd';
+import { Input } from 'antd';
 
-export const StyledInput = styled(AutoComplete)`
+export const StyledInput = styled(Input)`
   width: 100%;
 `;

@@ -2,7 +2,7 @@ import * as S from './Education.styled';
 import { Card } from '../../Card/Card';
 import { FormItem } from '../../FormItem/FormItem';
 import { Input } from '../../Input/Input';
-import { DatePicker } from 'antd';
+import { DatePicker } from '../../DatePicker/DatePicker';
 import { educationSlice } from '../../../store/reducers/EducationSlice';
 import { ChangeEvent } from 'react';
 import { useAppDispatch } from '../../../hooks/redux';

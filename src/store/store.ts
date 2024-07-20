@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import personalInfoReducer from './reducers/PersonalInfoSlice';
 import educationReducer from './reducers/EducationSlice';
+import skillsReducer from './reducers/SkillsSlice';
 const rootReducer = combineReducers({
   personalInfoReducer,
   educationReducer,
+  skillsReducer,
 });
 
 export const setupStore = () => {

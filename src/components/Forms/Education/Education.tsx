@@ -29,9 +29,11 @@ export const FormEducation: React.FC = () => {
       <FormItem title="Дата окончания">
         <DatePicker
           placeholder="Дата окончания"
-          onChange={(date: Dayjs) =>
-            dispatch(setGraduationDate(`${dayjs(date).format('DD.MM.YYYY')}`))
-          }
+          onChange={(date: Dayjs) => {
+            return dispatch(
+              setGraduationDate(`${dayjs(date).format('DD.MM.YYYY')}`),
+            );
+          }}
         />
       </FormItem>
       <FormItem title="Степень">

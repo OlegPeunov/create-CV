@@ -9,7 +9,7 @@ interface jobState {
   };
   description: string;
 }
-const initialState: jobState = {
+const jobItem: jobState = {
   company: '',
   position: '',
   period: {
@@ -19,24 +19,40 @@ const initialState: jobState = {
   description: '',
 };
 
+interface actionInputType {
+  formNum: number;
+  value: string;
+}
+
+const initialState: Array<jobState> = [jobItem];
+
 export const experianceSlice = createSlice({
   name: 'info',
   initialState: initialState,
   reducers: {
-    setInputCompany(state, action: PayloadAction<string>) {
-      state.company = action.payload;
+    setNewForm(state) {
+      state.push(jobItem);
     },
-    setInputPosition(state, action: PayloadAction<string>) {
-      state.position = action.payload;
+    deleteForm(state, action: PayloadAction<number>) {
+      state.splice(action.payload, 1);
+    },
+    setInputCompany(state, action: PayloadAction<actionInputType>) {
+      state[action.payload.formNum].company = action.payload.value;
+    },
+    setInputPosition(state, action: PayloadAction<actionInputType>) {
+      state[action.payload.formNum].position = action.payload.value;
     },
     setInputPeriod(
       state,
-      action: PayloadAction<{ start: string; end: string }>,
+      action: PayloadAction<{
+        formNum: number;
+        value: { start: string; end: string };
+      }>,
     ) {
-      state.period = action.payload;
+      state[action.payload.formNum].period = action.payload.value;
     },
-    setInputDescription(state, action: PayloadAction<string>) {
-      state.description = action.payload;
+    setInputDescription(state, action: PayloadAction<actionInputType>) {
+      state[action.payload.formNum].description = action.payload.value;
     },
   },
 });

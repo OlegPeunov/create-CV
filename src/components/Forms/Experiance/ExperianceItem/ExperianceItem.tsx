@@ -16,7 +16,7 @@ type ItemType = {
   id: string;
   deletable: boolean;
   num: number;
-  onFormRemove: (id: string) => void;
+  onFormRemove: (id: string, index: number) => void;
 };
 
 export const ExperianceItem: React.FC<ItemType> = ({
@@ -34,21 +34,24 @@ export const ExperianceItem: React.FC<ItemType> = ({
   const dispatch = useAppDispatch();
 
   const handleChangeCompany = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setInputCompany(event.target.value));
+    dispatch(setInputCompany({ formNum: num, value: event.target.value }));
   };
   const handleChangePosition = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setInputPosition(event.target.value));
+    dispatch(setInputPosition({ formNum: num, value: event.target.value }));
   };
   const handleChangeDescription = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    dispatch(setInputDescription(event.target.value));
+    dispatch(setInputDescription({ formNum: num, value: event.target.value }));
   };
   const handleChangeRange = (date: NoUndefinedRangeValueType<Dayjs>) => {
     dispatch(
       setInputPeriod({
-        start: `${dayjs(date[0]).format('DD.MM.YYYY')}`,
-        end: `${dayjs(date[1]).format('DD.MM.YYYY')}`,
+        formNum: num,
+        value: {
+          start: `${dayjs(date[0]).format('DD.MM.YYYY')}`,
+          end: `${dayjs(date[1]).format('DD.MM.YYYY')}`,
+        },
       }),
     );
   };
@@ -56,8 +59,12 @@ export const ExperianceItem: React.FC<ItemType> = ({
   return (
     <S.Form>
       <S.StyledWorkplace>
-        <S.StyledText>Место работы - {num}</S.StyledText>
-        {deletable ? <DeleteOutlined onClick={() => onFormRemove(id)} /> : ''}
+        <S.StyledText>Место работы - {num + 1}</S.StyledText>
+        {deletable ? (
+          <DeleteOutlined onClick={() => onFormRemove(id, num)} />
+        ) : (
+          ''
+        )}
       </S.StyledWorkplace>
       <FormItem title="Компания">
         <Input placeholder="Компания" onChange={handleChangeCompany} />
